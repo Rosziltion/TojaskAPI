@@ -1311,7 +1311,7 @@
         packets: {
             M: [1, 3], D: [60, 120], 9: [40, 80], e: [10, 20], F: [40, 80], z: [20, 40], H: [10, 20],
             K: [10, 20], L: [2, 4], N: [2, 4], b: [2, 4], P: [5, 10], Q: [5, 10], c: [10, 20],
-            6: [5, 10], S: [1, 2], 0: [2, 4], T: [1, 3], R: [2, 5], A: [20, 40], V: [4, 8], I: [1, 2]
+            6: [2, 4], S: [1, 2], 0: [2, 4], T: [1, 3], R: [2, 5], A: [20, 40], V: [4, 8], I: [1, 2]
         }
     };
 
@@ -5261,10 +5261,10 @@
     "use strict";
 
     const LINKS = {
-        github: "https://github.com/al007ex",
-        repo: "https://github.com/al007ex/MooMoo.js",
-        discord: "https://discord.gg/NMS3YR9Q5R",
-        author: "Nuro"
+        github: "",
+        repo: "",
+        discord: "",
+        author: ""
     };
 
     const STYLE_ID = "mmj-notice-style";
@@ -5534,8 +5534,6 @@
                 a.innerHTML = icon + '<span class="k">' + k + '</span><span class="v">' + v + '</span>';
                 return a;
             };
-            box.appendChild(row(LINKS.github, SVG.github, "github", "al007ex"));
-            box.appendChild(row(LINKS.discord, SVG.discord, "discord", "discord.gg/NMS3YR9Q5R"));
             return box;
         }
 
@@ -5582,18 +5580,14 @@
         // ---- the three cards ----
         function showThanks() {
             const card = el("div", "mmj-nt-card");
-            card.appendChild(el("div", "mmj-nt-kick", "mod loader active"));
-            card.appendChild(el("div", "mmj-nt-title", "You're good to go"));
+            card.appendChild(el("div", "mmj-nt-kick", ""));
+            card.appendChild(el("div", "mmj-nt-title", ""));
             card.appendChild(el("div", "mmj-nt-body",
-                "This is MooMoo.js, my mod loader for the server. It handles the game's protocol for you so the mods just run. " +
-                "Worth saying once: anything like this can get you banned on servers that don't allow mods, so keep it to ones that do. " +
-                "Bug, idea, or just a question? I'm here:"));
+                ""));
             card.appendChild(linksCard());
             const btns = el("div", "mmj-nt-btns");
-            const ok = el("button", "mmj-nt-btn green", "got it");
             btns.appendChild(ok);
             card.appendChild(btns);
-            card.appendChild(el("div", "mmj-nt-foot", "MooMoo.js v" + version + " · by " + LINKS.author));
             const close = mount(card, true);
             ok.onclick = close;
         }
