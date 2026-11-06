@@ -1266,8 +1266,18 @@
         // wire is the other way round (0 = equip, 1 = buy), so translate here — mods keep using
         // the documented meaning and `ctx.setHat` / `buyHat` work.
         store: { wire: "c", build: (d) => [d.action ? 0 : 1, d.id, bool(d.isAccessory)] },
-        chat: { wire: "6", build: (d) => [d.message == null ? "" : String(d.message)] },
-        pingMap: { wire: "S", build: () => [] },
+
+      // TOJAŞK FIX: Chat'i oyunun orijinal fonksiyonuna yönlendir
+chat: { wire: "6", build: (d) => {
+    try {
+        if (window.game && window.game.sendChat) { window.game.sendChat(d.message); return []; }
+    } catch(e) {}
+    return [d.message == null ? "" : String(d.message)];
+} },
+
+
+
+      pingMap: { wire: "S", build: () => [] },
         ping: { wire: "0", build: () => [] },
         watchStats: { wire: "V", build: (d) => [d.sid] },
         report: { wire: "R", build: (d) => d.args || [] },
